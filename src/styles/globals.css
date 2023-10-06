@@ -34,10 +34,14 @@ body {
     display: flex;
     flex-direction: column;
 }
+section {
+    @apply text-zinc-900 bg-zinc-50 max-w-4xl
+}
 
 section:nth-child(odd) {
-    color: white;
-    background-color: black;
+    @apply text-white bg-zinc-900;
+    box-shadow: 0 0 0 100vmax rgb(24 24 27);
+    clip-path: inset(0 -100vmax);
 }
 
 h1, h2, h3 {
@@ -61,10 +65,10 @@ h1, h2, h3 {
   line-height: 100%;
 }
 input, select, option, textarea {
-    @apply px-2 py-1 text-black rounded-sm;
+    @apply px-2 py-1 text-zinc-900 rounded-sm;
 }
 input[type="submit"] {
-    @apply bg-white text-black uppercase rounded-sm cursor-pointer my-4;
+    @apply bg-white text-zinc-900 uppercase rounded-sm cursor-pointer my-4;
 }
 textarea {
     @apply min-h-[10rem]

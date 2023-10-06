@@ -16,7 +16,7 @@ const bodyFont = Roboto_Condensed({
 
 export default function Layout({ children, darkMode } : { children: React.ReactNode, darkMode?: boolean }) {
     return (
-        <main className={`flex flex-col h-full flex-1 items-center min-h-screen ${ displayFont.variable } ${ bodyFont.variable } ${ darkMode ? 'bg-black' : 'bg-white'}` }>
+        <main className={`flex flex-col h-full flex-1 items-center min-h-screen ${ displayFont.variable } ${ bodyFont.variable } ${ darkMode ? 'bg-zinc-900' : 'bg-zinc-50'}` }>
             <MainNav/>
             { children }
             <footer className='flex w-full text-sm mt-auto items-center py-8'>

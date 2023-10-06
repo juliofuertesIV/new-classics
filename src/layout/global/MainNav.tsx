@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function MainNav() {
     return (
-        <nav className='w-full flex justify-center bg-white text-black uppercase'>
+        <nav className='w-full flex justify-center bg-zinc-50 text-zinc-900 uppercase'>
             <div className='flex flex-1'>
                 <Link className='py-2 px-2 w-full no-underline uppercase' href={ '/' }>LOGO</Link>
             </div>

@@ -1,5 +1,5 @@
 import ArtistsListSnippet from "@/components/landing/ArtistsListSnippet";
-import { Artist, HostedImage } from "@/database";
+import { Artist } from "@/database";
 import { IArtist } from "@/interfaces/songs";
 import Layout from "@/layout/Layout";
 import PageHeaderSection from "@/layout/global/PageHeaderSection";
@@ -8,7 +8,7 @@ import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsT
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 
-    const artists = await Artist.findAll({ include: [ HostedImage ]})
+    const artists = await Artist.findAll({ order: [[ 'name', 'ASC' ]]})
         .then(data => JSON.parse(JSON.stringify(data)))
 
     return {
@@ -31,6 +31,9 @@ export default function Home(pageProps: InferGetServerSidePropsType<GetServerSid
                 </div>
             </RegularSection>
             <RegularSection title="Artistas">
+                <div className="max-w-2xl mx-auto my-8">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio rerum dicta odit exercitationem recusandae deleniti at repudiandae rem atque ex. Unde porro suscipit error explicabo ab. Eum itaque excepturi nobis sed, sapiente est impedit quod? Saepe nostrum magni exercitationem facilis dicta pariatur, ratione modi iusto laborum. Ipsam illo doloremque culpa!</p>
+                </div>
                 <ArtistsListSnippet artists={ artists }/>
             </RegularSection>
         </Layout>

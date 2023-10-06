@@ -76,6 +76,10 @@ export const Guest = sequelize.define('Guests', {
     },
     youtube: {
         type: DataTypes.STRING
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 })
 
@@ -102,7 +106,11 @@ export const GuestRequest = sequelize.define('GuestRequests', {
     },
     youtube: {
         type: DataTypes.STRING
-    }    
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 })
 
 // content
@@ -146,32 +154,9 @@ export const Artist = sequelize.define('Artists', {
     },
     about: {
         type: DataTypes.TEXT
-    }
-})
-
-// tools
-
-export const HostedImage = sequelize.define('HostedImages', {
-    id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV1,
-        primaryKey: true
     },
-    src: {
+    image: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    },
-    alt: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    width: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    height: {
-        type: DataTypes.INTEGER,
         allowNull: false
     }
 })
@@ -185,9 +170,3 @@ Jam.belongsToMany(GuestRequest, { through: 'JamGuestRequests' })
 
 Song.belongsTo(Artist, { onDelete: 'CASCADE' })
 Artist.hasMany(Song)
-
-HostedImage.belongsTo(Artist, { onDelete: 'CASCADE' })
-Artist.hasOne(HostedImage)
-
-HostedImage.belongsTo(Guest, { onDelete: 'CASCADE' })
-Guest.hasOne(HostedImage)

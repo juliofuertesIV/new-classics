@@ -13,12 +13,7 @@ export interface IArtist {
     id: string,
     name: string,
     about: string,
-    HostedImage: {
-        src: string,
-        alt: string,
-        width: number,
-        height: number
-    }
+    image: string
 }
 
 export type MusicKey = 'A♭' | 'A' | 'A♯' | 'B♭' | 'B' | 'C' | 'C♯' | 'D♭' | 'D' | 'D♯' | 'E♭' | 'E' | 'F' | 'F♯' | 'G♭' | 'G'

@@ -1,13 +1,9 @@
 export interface ISong {
     id: string,
     name: string,
-    image: {
-        src: string,
-        alt: string
-    },
     lyrics: string,
     musicKey: MusicKey,
-    mode: MusicMode,
+    musicMode: MusicMode,
     spotifyLink: string,
     ArtistId: string,
     Artist?: IArtist
@@ -17,9 +13,11 @@ export interface IArtist {
     id: string,
     name: string,
     about: string,
-    image: {
+    HostedImage: {
         src: string,
-        alt: string
+        alt: string,
+        width: number,
+        height: number
     }
 }
 

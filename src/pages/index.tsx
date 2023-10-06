@@ -1,8 +1,26 @@
+import ArtistsListSnippet from "@/components/landing/ArtistsListSnippet";
+import { Artist, HostedImage } from "@/database";
+import { IArtist } from "@/interfaces/songs";
 import Layout from "@/layout/Layout";
 import PageHeaderSection from "@/layout/global/PageHeaderSection";
 import RegularSection from "@/layout/global/RegularSection";
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
-export default function Home() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+
+    const artists = await Artist.findAll({ include: [ HostedImage ]})
+        .then(data => JSON.parse(JSON.stringify(data)))
+
+    return {
+        props: {
+            artists
+        }
+    }
+}
+
+export default function Home(pageProps: InferGetServerSidePropsType<GetServerSideProps>) {
+
+    const { artists } = pageProps as { artists: IArtist[] }
 
     return (
         <Layout>
@@ -11,6 +29,9 @@ export default function Home() {
                 <div className="max-w-lg mx-auto">
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam labore tempora rerum assumenda numquam voluptas! Fuga odio inventore non fugit dolorem incidunt explicabo cum repellat. Optio dicta fugit cumque odio cum molestias soluta, est distinctio alias possimus qui fugiat harum inventore assumenda facere ducimus, nulla obcaecati numquam repudiandae.</p>
                 </div>
+            </RegularSection>
+            <RegularSection title="Artistas">
+                <ArtistsListSnippet artists={ artists }/>
             </RegularSection>
         </Layout>
     )

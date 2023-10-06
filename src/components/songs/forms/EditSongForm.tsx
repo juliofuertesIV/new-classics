@@ -1,5 +1,6 @@
 import { IArtist, ISong, MusicKey, MusicMode } from '@/interfaces/songs'
-import React, { FormEvent } from 'react'
+import { Mutable } from 'next/dist/client/components/router-reducer/router-reducer-types'
+import React, { FormEvent, useRef, useEffect, MutableRefObject } from 'react'
 
 interface Props {
     selectedSong: ISong,
@@ -9,26 +10,37 @@ interface Props {
 }
 
 export default function EditSongForm({ selectedSong, artists, musicData, onSubmitEditSongForm } : Props) {
+
+    const { id, name, lyrics, musicKey, musicMode, ArtistId } = selectedSong
+
+    const formRef = useRef<HTMLFormElement>(null)
+
+    useEffect(() => {
+
+        formRef.current?.reset()
+
+    }, [selectedSong])
+
     return (
         <div className='flex-1 flex flex-col border p-4'>
-            <h3 className='text-center mb-4'>{ selectedSong.name }</h3>
-            <form className='flex flex-col' onSubmit={ onSubmitEditSongForm }>
+            <h3 className='text-center mb-4'>{ name }</h3>
+            <form className='flex flex-col' ref={ formRef } onSubmit={ onSubmitEditSongForm }>
                 <label>
                     <p>Name:</p>
-                    <input type='text' name="name" defaultValue={ selectedSong.name } required />
+                    <input key={ selectedSong.id } type='text' name="name" defaultValue={ name } required />
                 </label>
                 <label>
                     <p>Lyrics:</p>
-                    <textarea name="lyrics" defaultValue={ selectedSong.lyrics || '' } />
+                    <textarea key={ selectedSong.id } name="lyrics" defaultValue={ lyrics } />
                 </label>
                 <div className='flex gap-4'>
                     <label className='flex-1'>
                         <p>Song key</p>
-                        <select name='musicKey' defaultValue={ selectedSong.musicKey }>
+                        <select key={ selectedSong.id } name='musicKey' defaultValue={ musicKey }>
                             <option value=""></option>
                             {
-                                musicData.keys.map((key, index) => {
-                                        return <option key={ index } value={ key }>{ key }</option>
+                                musicData.keys.map(key => {
+                                        return <option key={ key } value={ key }>{ key }</option>
                                     }
                                 )
                             }
@@ -36,7 +48,7 @@ export default function EditSongForm({ selectedSong, artists, musicData, onSubmi
                     </label>
                     <label className='flex-1'>
                         <p>Song mode</p>
-                        <select name='musicMode' defaultValue={ selectedSong.mode }>
+                        <select key={ selectedSong.id } name='musicMode' defaultValue={ musicMode }>
                             <option value=""></option>
                             <option value="minor">Minor</option>
                             <option value="major">Major</option>
@@ -45,7 +57,7 @@ export default function EditSongForm({ selectedSong, artists, musicData, onSubmi
                 </div>
                 <label>
                     <p>Artist:</p>
-                    <select name="ArtistId" defaultValue={ selectedSong.ArtistId }>
+                    <select key={ selectedSong.id } name="ArtistId" defaultValue={ ArtistId }>
                         <option value=''></option>
                         { 
                             artists.map((artist) =>
@@ -53,7 +65,7 @@ export default function EditSongForm({ selectedSong, artists, musicData, onSubmi
                         }
                     </select>
                 </label>
-                <input type="hidden" name='id' value={ selectedSong.id } />
+                <input key={ selectedSong.id } type="hidden" name='id' value={ id } />
                 <input type="submit" value="Edit" />
             </form>
         </div>  

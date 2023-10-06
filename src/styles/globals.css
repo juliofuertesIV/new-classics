@@ -66,6 +66,9 @@ input, select, option, textarea {
 input[type="submit"] {
     @apply bg-white text-black uppercase rounded-sm cursor-pointer my-4;
 }
+textarea {
+    @apply min-h-[10rem]
+}
 label {
     @apply flex flex-col gap-1 mb-2; 
 }

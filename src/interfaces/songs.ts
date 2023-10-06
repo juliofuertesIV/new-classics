@@ -6,7 +6,8 @@ export interface ISong {
         alt: string
     },
     lyrics: string,
-    musicKey: string,
+    musicKey: MusicKey,
+    mode: MusicMode,
     spotifyLink: string,
     ArtistId: string,
     Artist?: IArtist
@@ -21,3 +22,6 @@ export interface IArtist {
         alt: string
     }
 }
+
+export type MusicKey = 'A♭' | 'A' | 'A♯' | 'B♭' | 'B' | 'C' | 'C♯' | 'D♭' | 'D' | 'D♯' | 'E♭' | 'E' | 'F' | 'F♯' | 'G♭' | 'G'
+export type MusicMode = 'minor' | 'major'

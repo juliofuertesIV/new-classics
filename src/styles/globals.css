@@ -60,7 +60,7 @@ h1, h2, h3 {
   text-transform: uppercase;
   line-height: 100%;
 }
-input, select, option {
+input, select, option, textarea {
     @apply px-2 py-1 text-black rounded-sm;
 }
 input[type="submit"] {

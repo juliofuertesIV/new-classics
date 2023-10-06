@@ -124,6 +124,9 @@ export const Song = sequelize.define('Songs', {
     musicKey: {
         type: DataTypes.STRING
     },
+    musicMode: {
+        type: DataTypes.STRING
+    },
     spotifyLink: {
         type: DataTypes.STRING,
         unique: true

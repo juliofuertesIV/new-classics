@@ -1,99 +1,67 @@
 import { IArtist, ISong } from '@/interfaces/songs'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React, { FormEvent } from 'react'
+import EditSongForm from './forms/EditSongForm'
+import { musicData } from '@/data/music'
+import AddSongForm from './forms/AddSongForm'
 
 interface Props {
     selectedSong: ISong | null,
     artists: IArtist[] | undefined
 }
 
-const addSong = async ({ payload } : { payload: { name: string, lyrics?: string, ArtistId?: string }}) => 
-    await fetch('/api/songs', { method: 'POST', body: JSON.stringify(payload) })
-
-
 export default function SongForm({ selectedSong, artists } : Props) {
+   
+    const addSong = async ({ payload } : { payload: { name: string, lyrics?: string, ArtistId?: string }}) => 
+        await fetch('/api/songs', { method: 'POST', body: JSON.stringify(payload) })
+
+    const editSong = async ({ payload } : { payload: { name: string, lyrics?: string, ArtistId?: string }}) => 
+        await fetch(`/api/songs/${ selectedSong?.id }`, { method: 'PUT', body: JSON.stringify(payload) })
+
 
     const queryClient = useQueryClient()
 
     const addSongMutation = useMutation({
         mutationFn: addSong,
-        onSuccess: (data) => {
-            console.log(data)
-            queryClient.invalidateQueries(['getAllSongs'])
-        },
-        onError: (error) => {
-            console.log(error)
-        }
+        onSuccess: (data) => { queryClient.invalidateQueries(['getAllSongs']) },
+        onError: (error) => { console.log(error) }
     })
 
-    const onSubmitAddSongForm = (e: FormEvent<HTMLFormElement>) => {
-        
+    const editSongMutation = useMutation({
+        mutationFn: editSong,
+        onSuccess: (data) => { queryClient.invalidateQueries(['getAllSongs']) },
+        onError: (error) => { console.log(error) }
+    })
+
+    const onSubmitAddSongForm = (e: FormEvent<HTMLFormElement>) => {       
         e.preventDefault()
-
         const payload = Object.fromEntries(new FormData(e.currentTarget)) as { name: string, lyrics?: string, ArtistId?: string }
-
         addSongMutation.mutate({ payload })
+        e.currentTarget.reset()
     }
+
+    const onSubmitEditSongForm = (e: FormEvent<HTMLFormElement>) => {       
+        e.preventDefault()
+        const payload = Object.fromEntries(new FormData(e.currentTarget)) as { id: string, name: string, lyrics?: string, ArtistId?: string }
+        editSongMutation.mutate({ payload })
+        e.currentTarget.reset()
+    } 
 
     if (!artists) return 'Loading...'
 
-
-    
     if (!selectedSong) return (
-        <div className='flex-1 flex flex-col border p-4'>
-            <h3 className='text-center mb-4'>Add song</h3>
-            <form className='flex flex-col' onSubmit={ onSubmitAddSongForm }>
-                <label>
-                    <p>Name:</p>
-                    <input type='text' name="name" required/>
-                </label>
-                <label>
-                    <p>Lyrics:</p>
-                    <textarea name="lyrics" />
-                </label>
-                <label>
-                    <p>Artist:</p>
-                    <select name="ArtistId">
-                        <option value=''></option>
-                        { 
-                            artists.map((artist) => 
-                            <option 
-                                key={ artist.id }
-                                value={ artist.id }>
-                                    { artist.name }
-                                </option>
-                            )
-                        }
-                    </select>
-                </label>
-                <input type="submit" value="Add"/>
-            </form>
-        </div>
+        <AddSongForm 
+            artists={ artists }
+            onSubmitAddSongForm={ onSubmitAddSongForm }
+        />
     )
 
     return (
-        <div className='flex-1 flex flex-col border p-4'>
-            <h3 className='text-center mb-4'>{ selectedSong.name }</h3>
-            <form className='flex flex-col'>
-                <label>
-                    <p>Name:</p>
-                    <input type='text' name="name" defaultValue={ selectedSong.name } required />
-                </label>
-                <label>
-                    <p>Lyrics:</p>
-                    <input type='text' name="about" defaultValue={ selectedSong.lyrics || '' } />
-                </label>
-                <label>
-                    <p>Artist:</p>
-                    <select name="ArtistId">
-                        <option value=''></option>
-                        { 
-                            artists.map((artist) =>
-                                <option selected={ artist.id === selectedSong.ArtistId} key={ artist.id } value={ artist.id }>{ artist.name }</option>)
-                        }
-                    </select>
-                </label>
-            </form>
-        </div>  
+        <EditSongForm 
+            onSubmitEditSongForm={ onSubmitEditSongForm }
+            selectedSong={ selectedSong }
+            artists={ artists }
+            musicData={ musicData }
+        />
     )
 }

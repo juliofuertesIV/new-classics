@@ -1,4 +1,4 @@
-import { Song } from "@/database";
+import { Artist, Song } from "@/database";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default function routeHandler (req: NextApiRequest, res: NextApiResponse) {
@@ -14,18 +14,19 @@ export default function routeHandler (req: NextApiRequest, res: NextApiResponse)
 
 const getSongs = async (req: NextApiRequest, res: NextApiResponse) => {
 
-    const songs = await Song.findAll().then(data => data)
+    const songs = await Song.findAll({ include: [Artist], order: [['name', 'ASC']]}).then(data => data)
     return res.status(200).json(songs)
 } 
 
 const addSong = async (req: NextApiRequest, res: NextApiResponse) => {
 
-    //check permissions
+    const payload = JSON.parse(req.body)
 
     try {
-        const inserted = await Song.create(req.body)
+        const inserted = await Song.create(payload)
         return res.status(200).json(inserted)
     } catch (e) {
+        console.log({ e })
         res.status(500).json(e)
     }
 }

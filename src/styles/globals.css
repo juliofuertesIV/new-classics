@@ -60,3 +60,12 @@ h1, h2, h3 {
   text-transform: uppercase;
   line-height: 100%;
 }
+input, select, option {
+    @apply px-2 py-1 text-black rounded-sm;
+}
+input[type="submit"] {
+    @apply bg-white text-black uppercase rounded-sm cursor-pointer my-4;
+}
+label {
+    @apply flex flex-col gap-1 mb-2; 
+}

@@ -9,6 +9,7 @@ export interface ISong {
     musicKey: string,
     spotifyLink: string,
     ArtistId: string,
+    Artist?: IArtist
 }
 
 export interface IArtist {

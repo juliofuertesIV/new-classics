@@ -1,5 +1,3 @@
-import ArtistList from '@/components/artists/ArtistList'
-import ArtistForm from '@/components/artists/ArtistForm'
 import { IArtist, ISong } from '@/interfaces/songs'
 import Layout from '@/layout/Layout'
 import AdminNav from '@/layout/admin/AdminNav'
@@ -31,8 +29,8 @@ export default function AdminSongs() {
     return (
         <Layout darkMode={ true }>
             <AdminNav/>
-            <RegularSection title='Artists' className='bg-black'>
-                <div className='flex max-w-5xl mx-auto gap-4 my-8'>
+            <RegularSection title='Songs' className='bg-black'>
+                <div className='flex max-w-6xl items-start mx-auto gap-4 my-8'>
                     <SongList
                         songs={ songs }
                         selectedSong={ selectedSong }

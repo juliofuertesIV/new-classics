@@ -117,13 +117,16 @@ export const Song = sequelize.define('Songs', {
         type: DataTypes.TEXT
     },
     name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     },
     musicKey: {
         type: DataTypes.STRING
     },
     spotifyLink: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     }
 })
 

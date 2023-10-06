@@ -18,10 +18,45 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  font-weight: 300;
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: var(--font-regular);
+    min-height: 100vh;
+}
+
+#__next {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+section:nth-child(odd) {
+    color: white;
+    background-color: black;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h1, h2, h3 {
+  text-transform: uppercase;
+  line-height: 100%;
 }

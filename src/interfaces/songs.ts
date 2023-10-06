@@ -1,5 +1,6 @@
 export interface ISong {
     id: string,
+    name: string,
     image: {
         src: string,
         alt: string

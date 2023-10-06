@@ -1,16 +1,11 @@
+import Layout from '@/layout/Layout'
+import PageHeaderSection from '@/layout/global/PageHeaderSection'
 import React from 'react'
 
 export default function Songs() {
-  return (
-    <main>
-        <section className="py-8 px-4 bg-white text-black text-center">
-            <header>
-                <h1 className='my-8'>Lista de canciones</h1>
-            </header>
-        </section>
-        <section>
-            
-        </section>
-    </main>
-  )
+    return (
+        <Layout>
+            <PageHeaderSection title='Canciones'/>
+        </Layout>
+    )
 }

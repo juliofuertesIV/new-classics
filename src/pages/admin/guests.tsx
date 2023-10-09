@@ -24,7 +24,7 @@ export default function AdminGuests() {
     return (
         <Layout darkMode={ true }>
             <AdminNav/>
-            <RegularSection title='Artists' className='bg-black'>
+            <RegularSection title='Guests' className='bg-black'>
                 <div className='flex max-w-6xl mx-auto gap-4 my-8 items-start'>
                     <GuestList 
                         guests={ guests }

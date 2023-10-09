@@ -1,4 +1,3 @@
-import HostedImageForm from '@/components/images/HostedImageForm'
 import { IArtist } from '@/interfaces/songs'
 import React, { FormEvent } from 'react'
 
@@ -21,7 +20,6 @@ export default function EditArtistForm({ selectedArtist, onSubmitEditArtist } : 
                     <input key={ selectedArtist.id } type='text' name="about" defaultValue={ selectedArtist.about }/>
                 </label>
             </form>
-            <HostedImageForm isFor='artist' ArtistId={ selectedArtist.id }/>
         </div>  
     )
 }

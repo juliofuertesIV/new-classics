@@ -78,8 +78,7 @@ export const Guest = sequelize.define('Guests', {
         type: DataTypes.STRING
     },
     image: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING
     }
 })
 

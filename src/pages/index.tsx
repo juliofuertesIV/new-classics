@@ -1,5 +1,5 @@
 import ArtistsListSnippet from "@/components/landing/ArtistsListSnippet";
-import { Artist, Jam } from "@/database";
+import { Artist, Guest, Jam } from "@/database";
 import { IJam } from "@/interfaces/jam";
 import { IArtist } from "@/interfaces/songs";
 import Layout from "@/layout/Layout";

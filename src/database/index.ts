@@ -34,23 +34,23 @@ export const User = sequelize.define('Users', {
 
 export const Jam = sequelize.define('Jams', {
     id: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV1,
         primaryKey: true
     },
     date: {
         type: DataTypes.DATE,
         allowNull: false
     },
-    openDoors: {
+    openDoorsTime: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: '20:30:00'
+        defaultValue: '20:30'
     },
     startJamTime: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: '21:00:00'
+        defaultValue: '21:00'
     },
     hasGuest: {
         type: DataTypes.BOOLEAN,
@@ -156,8 +156,7 @@ export const Artist = sequelize.define('Artists', {
         type: DataTypes.TEXT
     },
     image: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING
     }
 })
 

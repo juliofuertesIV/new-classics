@@ -21,7 +21,7 @@ export default function ArtistsListSnippet({ artists } : Props) {
                         alt={ artist.name }
                     />
                     <div className="flex items-center w-fit h-fit p-2 mr-4 text-white absolute">
-                        <h3 className='drop-shadow-sm group-hover:bg-zinc-900 transition-colors'>{ artist.name }</h3>
+                        <h3 className='drop-shadow-sm group-hover:bg-zinc-900 px-4 transition-colors'>{ artist.name }</h3>
                     </div>
                 </article>
             ))

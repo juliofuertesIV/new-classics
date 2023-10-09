@@ -8,6 +8,7 @@ interface Props {
 }
 
 export default function NextJamsSnippet({ jams } : Props) {
+
     return (
       <div className="w-full mb-12">
         <header className="py-8 text-center">

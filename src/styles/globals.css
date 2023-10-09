@@ -35,7 +35,7 @@ body {
     flex-direction: column;
 }
 section {
-    @apply text-zinc-900 bg-zinc-50 max-w-4xl
+    @apply text-zinc-900 bg-zinc-50 max-w-5xl
 }
 
 section:nth-child(odd) {

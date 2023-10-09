@@ -4,8 +4,8 @@ import AdminNav from '@/layout/admin/AdminNav'
 import RegularSection from '@/layout/global/RegularSection'
 import { useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
-import SongForm from '@/components/songs/SongForm'
-import SongList from '@/components/songs/SongList'
+import SongForm from '@/components/admin/songs/SongForm'
+import SongList from '@/components/admin/songs/SongList'
 
 const getData = async () => {
     const songs = await fetch('/api/songs').then(data => data.json()) as unknown as ISong[]

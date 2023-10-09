@@ -20,13 +20,22 @@ export const User = sequelize.define('Users', {
         defaultValue: DataTypes.UUIDV1,
         primaryKey: true
     },
-    name: {
-        type: DataTypes.STRING(255),
-        allowNull: false
-    },
     email: {
         type: DataTypes.STRING(255),
         allowNull: false,
+        unique: true
+    },
+    hash: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    salt: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    authToken: {
+        type: DataTypes.STRING
     }
 })
 

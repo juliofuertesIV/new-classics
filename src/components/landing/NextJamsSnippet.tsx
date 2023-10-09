@@ -17,8 +17,8 @@ export default function NextJamsSnippet({ jams } : Props) {
         {
             jams.map((jam) => {
                 return (
-                    <article key={jam.id} className="text-center border-2 w-full h-32 bg-gradient-to-r from-violet-400 to-fuchsia-400 overflow-hidden">
-                        <h4 className="uppercase w-full p-2 bg-zinc-800">{ new Date(jam.date).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'short' })}</h4>
+                    <article key={jam.id} className="text-center border-2 w-full h-32 overflow-hidden gradient-bg ">
+                        <h4 className="uppercase w-full p-2 bg-zinc-900">{ new Date(jam.date).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'short' })}</h4>
                         <Image
                             src={ '/img/artists/elvis.jpg'} 
                             alt="img" 

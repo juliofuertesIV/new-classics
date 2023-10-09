@@ -19,6 +19,8 @@ export default function EditArtistForm({ selectedArtist, onSubmitEditArtist } : 
                     <p>About:</p>
                     <input key={ selectedArtist.id } type='text' name="about" defaultValue={ selectedArtist.about }/>
                 </label>
+                <input key={ selectedArtist.id } type="hidden" name='id' value={ selectedArtist.id } />
+                <input type="submit" value="Edit" />
             </form>
         </div>  
     )

@@ -15,6 +15,8 @@ export default function EditGuestForm({ selectedGuest, onSubmitEditGuestForm } :
                     <p>Name:</p>
                     <input key={ selectedGuest.id } type='text' name="name" required defaultValue={ selectedGuest.name }/>
                 </label>
+                <input key={ selectedGuest.id } type="hidden" name='id' value={ selectedGuest.id } />
+                <input type="submit" value="Edit" />
             </form>
         </div>  
     )

@@ -12,11 +12,11 @@ export default function ArtistsListSnippet({ artists } : Props) {
         <div className="w-full grid lg:grid-cols-2 place-items-center gap-4">
         {
             artists.map((artist) => (
-                <article key={ artist.id } className="flex justify-end bg-zinc-900 w-full max-w-lg h-32 items-center relative border-4 border-black cursor-pointer">
+                <article key={ artist.id } className="group flex justify-end bg-zinc-900 w-full max-w-lg h-32 items-center relative border-4 border-black cursor-pointer">
                     <Image 
-                        className='w-full h-full max-h-full min-w-full max-w-full object-cover object-center absolute z-0 hover:object-top opacity-30 hover:opacity-80 transition-all'
-                        width={ 1000 }
-                        height={ 500 }
+                        className='w-full h-full max-h-full min-w-full max-w-full object-cover object-center absolute z-0 group-hover:object-top opacity-30 group-hover:opacity-80 transition-all'
+                        width={ 452 }
+                        height={ 120 }
                         src={ `/img/artists/${artist.image }` }
                         alt={ artist.name }
                     />

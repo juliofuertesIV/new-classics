@@ -35,7 +35,7 @@ body {
     flex-direction: column;
 }
 section {
-    @apply text-zinc-900 bg-zinc-50 max-w-5xl
+    @apply text-zinc-900 bg-zinc-50 max-w-5xl;
 }
 
 section:nth-child(odd) {
@@ -44,23 +44,23 @@ section:nth-child(odd) {
     clip-path: inset(0 -100vmax);
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 400;
 }
 h1 {
-  font-size: 4rem;
+  @apply text-7xl lg:text-7xl;
 }
 h2 {
-  font-size: 3rem;
+  @apply text-4xl lg:text-5xl;
 }
 h3 {
-  font-size: 2rem;
+  @apply text-3xl lg:text-4xl;
 }
 h4 {
-  font-size: 1.5rem;
+  @apply text-xl lg:text-2xl;
 }
-h1, h2, h3 {
+h1, h2, h3, h4 {
   text-transform: uppercase;
   line-height: 100%;
 }

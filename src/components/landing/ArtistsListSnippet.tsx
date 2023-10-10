@@ -9,7 +9,7 @@ interface Props {
 export default function ArtistsListSnippet({ artists } : Props) {
 
     return (
-        <div className="w-full grid md:grid-cols-2 place-items-center gap-4 px-4 lg:px-0">
+        <div className="w-full grid md:grid-cols-2 xl:grid-cols-3 place-items-center gap-4 px-4 lg:px-0">
         {
             artists.map((artist) => (
                 <article key={ artist.id } className="group flex justify-end bg-zinc-900 w-full max-w-lg h-32 items-center relative border-4 border-zinc-900 cursor-pointer gradient-bg">
@@ -20,8 +20,8 @@ export default function ArtistsListSnippet({ artists } : Props) {
                         src={ `/img/artists/${artist.image }` }
                         alt={ artist.name }
                     />
-                    <div className="flex items-center w-fit h-fit p-2 mr-4 text-white absolute">
-                        <h3 className='drop-shadow-sm group-hover:bg-zinc-900 px-4 transition-colors'>{ artist.name }</h3>
+                    <div className="flex justify-center items-center w-full h-fit p-2 mt-8 text-white">
+                        <h4 className='drop-shadow-sm px-4 transition-colors'>{ artist.name }</h4>
                     </div>
                 </article>
             ))

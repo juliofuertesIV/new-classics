@@ -34,11 +34,13 @@ export default function Home(pageProps: InferGetServerSidePropsType<GetServerSid
 
     return (
         <Layout>
-            <PageHeaderSection title="The New Classics" />
-            <RegularSection title="La jam de 16 Toneladas">
-                <div className="max-w-2xl mx-auto">
-                    <p>Solemos estar todos los miércoles en <Link href="https://16toneladas.com" className="underline cursor-pointer hover:text-fuchsia-400">16 Toneladas</Link>, una de las mejores salas de concierto de Valencia. La apertura de puertas suele ser a las 20:30h y aguantamos por ahí hasta las 00h, pero de vez en cuando puede haber cambios en la programación, así que aquí puedes echar un ojo: </p>
+            <PageHeaderSection title="The New Classics">
+                <div className="max-w-2xl mx-auto text-center mb-8">
+                    <h2>La jam de 16 Toneladas</h2>
                 </div>
+            </PageHeaderSection>
+            <RegularSection title="Próximas jams">
+                <p className="max-w-2xl mx-auto mb-12">Solemos estar todos los miércoles en <Link href="https://16toneladas.com" className="underline cursor-pointer hover:text-fuchsia-400">16 Toneladas</Link>, una de las mejores salas de concierto de Valencia. La apertura de puertas suele ser a las 20:30h y aguantamos por ahí hasta las 00h, pero de vez en cuando puede haber cambios en la programación, así que aquí puedes echar un ojo: </p>
                 <NextJamsSnippet jams={ jams }/>
             </RegularSection>
             <RegularSection title="Artistas">
